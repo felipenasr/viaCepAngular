@@ -1,0 +1,4 @@
+<form>
+    <input maxlength="8" [(ngModel)]="cep.zip" [ngModelOptions]="{standalone: true}" type="text">
+    <button (click)='consutalCep($event, cep.zip)'>Enviar</button>
+</form>
