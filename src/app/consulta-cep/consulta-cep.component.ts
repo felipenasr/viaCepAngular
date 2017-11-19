@@ -22,7 +22,14 @@ export class ConsultaCepCompent implements OnInit{
     consutalCep(e, zip){
         event.preventDefault();
         let path = this.service.url(zip) + "/json/";
-        let data = this.service.getViaCep(path);
+        let data = this.service.getViaCep(path)
+        .then(cepData => {
+              let data = cepData;
+              console.log("data");
+              console.log(data);
+              console.log("data._body");
+              console.log(data._body);
+        });
         
         console.log(data);
     }
@@ -30,4 +37,3 @@ export class ConsultaCepCompent implements OnInit{
         this.cep = new zipCode("");
 
     }
-}

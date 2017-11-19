@@ -10,6 +10,12 @@ import "rxjs/add/operator/toPromise";
 export class ConsultaCepService{
 
 	private api_url: string = "https://viacep.com.br/ws/";
+
+	private headers = new Headers({
+		'Content-Type': 'application/json', 
+		'Accept': 'application/json'
+
+	});
 	
     constructor(
 		private http: Http
@@ -18,16 +24,9 @@ export class ConsultaCepService{
     url(path: string) {
 		return this.api_url + path;
     }
-    
-    headers() {
-		let headersParams = { 'Content-Type': 'application/json' };
-		let headers = new Headers(headersParams);
-    	let options = new RequestOptions({ headers: headers });
-    	return options;
-	}
 
 	getViaCep(url) { 
 		return this.http.get(url)
-            .toPromise().then(response => response.json());
+            .toPromise();
     }
 }
