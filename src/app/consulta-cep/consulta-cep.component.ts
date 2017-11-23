@@ -13,7 +13,8 @@ export class ConsultaCepCompent implements OnInit{
     
     consultaCepForm: FormGroup;
     cep: zipCode;
-
+    caue: {};
+    
     constructor(
         private service: ConsultaCepService        
     ){
@@ -22,18 +23,24 @@ export class ConsultaCepCompent implements OnInit{
     consutalCep(e, zip){
         event.preventDefault();
         let path = this.service.url(zip) + "/json/";
-        let data = this.service.getViaCep(path)
+        this.service.getViaCep(path)
         .then(cepData => {
-              let data = cepData;
-              console.log("data");
-              console.log(data);
-              console.log("data._body");
-              console.log(data._body);
-        });
+              this.cep = cepData.json();
+              console.log(this.cep);
+            });
+            
+
         
-        console.log(data);
+    }
+
+    cauezeraGB(){
+        this.service.getGenteBoa().then((res)=>{
+         return res;
+
+        })
     }
     ngOnInit(){
         this.cep = new zipCode("");
 
     }
+}

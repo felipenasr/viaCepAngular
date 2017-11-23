@@ -2,3 +2,17 @@
     <input maxlength="8" [(ngModel)]="cep.zip" [ngModelOptions]="{standalone: true}" type="text">
     <button (click)='consutalCep($event, cep.zip)'>Enviar</button>
 </form>
+
+
+<p>{{ cep.cep }}</p>
+<p>{{ cep.logradouro }}</p>
+<p>{{ cep.bairro }}</p>
+<p>{{ cep.complmento }}</p>
+<p>{{ cep.localidade }}</p>
+
+
+
+<form>
+        <button (click)='cauezeraGB()'>Enviar</button>
+</form>
+    
